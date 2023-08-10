@@ -111,8 +111,8 @@ def main():
     # Compute the similarity matrix
     similarity_matrix = build_distance_matrix(df[TEXT_COLUMN], cutoff=CUTOFF)
 
-    with open(Path(OUTPUT_DIR, "sim.pkl"), "wb") as f:
-        pickle.dump(f, similarity_matrix)
+    with open(str(Path(OUTPUT_DIR, "sim.pkl")), "wb") as f:
+        pickle.dump(similarity_matrix, f)
 
 
 if __name__ == "__main__":
