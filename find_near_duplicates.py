@@ -4,9 +4,10 @@ import pickle
 import pandas as pd
 from tqdm import tqdm
 from pathlib import Path
-from constants import NADI_FILE_PATH
 from Levenshtein import ratio
 from scipy.sparse import vstack, csr_array
+from argparse import ArgumentParser
+from constants import MADAR_FILE_PATH, NADI_FILE_PATH
 
 tqdm.pandas()
 
@@ -44,7 +45,7 @@ def build_distance_matrix(text_samples, cutoff):
     for i in tqdm(range(len(text_samples) - 1)):
         text = text_samples[i]
         # Compute the similarity score between a sample and the following ones
-        sim_row = [0 for _ in range(i)] + [
+        sim_row = [0 for _ in range(i + 1)] + [
             compute_similarity(text, other_text, cutoff=cutoff)
             for other_text in text_samples[i + 1 :]
         ]
@@ -98,12 +99,25 @@ def normalize_text_column(df, text_column):
 
 
 def main():
+    parser = ArgumentParser("Compute similarity matrix between samples")
+    parser.add_argument("-dataset", "-d", choices=["NADI", "MADAR"])
+    parser.add_argument("-text_column", default="text")
+
+    args = parser.parse_args()
     CUTOFF = 0.75
-    TEXT_COLUMN = "text"
-    OUTPUT_DIR = "output/NADI"
+    TEXT_COLUMN = args.text_column
+    DATASET = args.dataset
+    OUTPUT_DIR = f"output/{DATASET}"
+    FILE_PATH = (
+        NADI_FILE_PATH
+        if DATASET == "NADI"
+        else MADAR_FILE_PATH
+        if DATASET == "MADAR"
+        else ""
+    )
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    df = pd.read_csv(NADI_FILE_PATH, sep="\t")
+    df = pd.read_csv(FILE_PATH, sep="\t")
 
     # Normalize the Arabic text
     df = normalize_text_column(df, text_column=TEXT_COLUMN)
@@ -113,6 +127,8 @@ def main():
 
     with open(str(Path(OUTPUT_DIR, "sim.pkl")), "wb") as f:
         pickle.dump(similarity_matrix, f)
+
+    df.to_csv(str(Path(OUTPUT_DIR, f"{DATASET}.tsv")), sep="\t", index=False)
 
 
 if __name__ == "__main__":

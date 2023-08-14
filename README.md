@@ -4,7 +4,7 @@
 * Extract both zip files into `data/`
 * Unify the column names of both datasets by running `python augment_dataset.py`
 
-## Error analysis
+## Error analysis
 
 * Fine-tune MarBERT using NADI2023's training data
 ```
@@ -26,3 +26,6 @@ do
     CUDA_VISIBLE_DEVICES="0" python finetune-BERT.py predict -d data/NADI_datasets/NADI2021_"${SPLIT}".tsv -p "${MODEL_DIR}/checkpoint-1689" -o "${OUTPUT_DIR}"/NADI2021_"${SPLIT}"_pred.tsv 
 done
 ```
+
+### Links to datasets
+- [MADAR corpus](https://camel.abudhabi.nyu.edu/madar-shared-task-2019/)

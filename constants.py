@@ -1,4 +1,5 @@
-NADI_FILE_PATH="data/NADI2021_2023.tsv"
+NADI_FILE_PATH = "data/NADI_datasets/NADI2021_2023.tsv"
+MADAR_FILE_PATH = "data/MADAR.tsv"
 
 # Dialects covered in NADI2023
 DIALECTS = [
@@ -45,6 +46,35 @@ COUNTRY_TO_REGION = {
     "UAE": "gulf",
     "Yemen": "gulf_aden",
 }
+
+MADAR_CITY_TO_COUNTRY = {
+    "ALE": "Syria",
+    "ALG": "Algeria",
+    "ALX": "Egypt",
+    "AMM": "Jordan",
+    "ASW": "Egypt",
+    "BAG": "Iraq",
+    "BAS": "Iraq",
+    "BEI": "Lebanon",
+    "BEN": "Libya",
+    "CAI": "Egypt",
+    "DAM": "Syria",
+    "DOH": "Qatar",
+    "FES": "Morocco",
+    "JED": "Saudi_Arabia",
+    "JER": "Palestine",
+    "KHA": "Sudan",
+    "MOS": "Iraq",
+    "MUS": "Oman",
+    "RAB": "Morocco",
+    "RIY": "Saudi_Arabia",
+    "SAL": "Jordan",
+    "SAN": "Yemen",
+    "SFX": "Tunisia",
+    "TRI": "Libya",
+    "TUN": "Tunisia",
+}
+
 
 COUNTRIES_IN_SAME_REGION = {
     dialect: [
