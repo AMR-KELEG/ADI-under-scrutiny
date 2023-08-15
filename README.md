@@ -27,5 +27,14 @@ do
 done
 ```
 
+## Check duplicated samples in datasets (NADI, MADAR)
+```
+DATASET="NADI"
+# Generate similairty matrix for a dataset (output/DATASET/sim.pkl)
+python find_near_duplicates.py -d ${DATASET}
+
+python extract_duplicates.py -sm output/${DATASET}/sim.pkl -d output/${DATASET}/${DATASET}.tsv -o output/${DATASET}/high_sim_th_1.0.tsv -th 1.0
+```
+
 ### Links to datasets
 - [MADAR corpus](https://camel.abudhabi.nyu.edu/madar-shared-task-2019/)
