@@ -75,6 +75,13 @@ MADAR_CITY_TO_COUNTRY = {
     "TUN": "Tunisia",
 }
 
+MultiDialect_COUNTRYCODE_TO_COUNTRY = {
+    "EG": "Egypt",
+    "TN": "Tunisia",
+    "SY": "Syria",
+    "JO": "Jordan",
+    "PA": "Palestine",
+}
 
 COUNTRIES_IN_SAME_REGION = {
     dialect: [

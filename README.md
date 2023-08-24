@@ -1,10 +1,71 @@
 # Arabic Dialect Identification under Scrutiny
 
+## Experiment #1 - Estimating the Maximal Accuracy of Parallel Corpora
+1. Create a directory for the data:
+```
+mkdir -p data/
+```
+
+2. Download the datasets to the `data/` directory:
+- Multidialectal Parallel Corpus of Arabic: https://nyuad.nyu.edu/en/research/faculty-labs-and-projects/computational-approaches-to-modeling-language-lab/resources.html
+- PADIC: https://sourceforge.net/projects/padic/
+- Multi-Arabic Dialect Corpus (MADAR Corpus) - (Dialect Identification Shared Task Dataset (WANLP 2019) - Dataset and Code for MADAR Shared Task): https://nyuad.nyu.edu/en/research/faculty-labs-and-projects/computational-approaches-to-modeling-language-lab/resources.html
+
+3. Extract the files in the `data/` directory. The expected structure is:
+```
+data
+├── MADAR-SHARED-TASK-final-release-25Jul2019
+│   ├── MADAR-DID-Scorer.py
+│   ├── MADAR-Shared-Task-Subtask-1
+│   │   ├── EXAMPLE.GOLD
+│   │   ├── EXAMPLE.PRED
+│   │   ├── MADAR-Corpus-26-dev.tsv
+│   │   ├── MADAR-Corpus-26-test.tsv
+│   │   ├── MADAR-Corpus-26-train.tsv
+│   │   ├── MADAR-Corpus-6-dev.tsv
+│   │   ├── MADAR-Corpus-6-train.tsv
+│   │   └── MADAR-Corpus-Lexicon-License.txt
+│   ├── MADAR-Shared-Task-Subtask-2
+│   │   ├── EXAMPLE.GOLD
+│   │   ├── EXAMPLE.PRED
+│   │   ├── MADAR-Obtain-Tweets.py
+│   │   ├── MADAR-Twitter-Corpus-License.txt
+│   │   ├── MADAR-Twitter-Subtask-2.DEV.user-label.tsv
+│   │   ├── MADAR-Twitter-Subtask-2.DEV.user-tweets-features.tsv
+│   │   ├── MADAR-Twitter-Subtask-2.TEST.user-label.tsv
+│   │   ├── MADAR-Twitter-Subtask-2.TEST.user-tweets-features.tsv
+│   │   ├── MADAR-Twitter-Subtask-2.TRAIN.user-label.tsv
+│   │   └── MADAR-Twitter-Subtask-2.TRAIN.user-tweets-features.tsv
+│   ├── MADAR_SharedTask_Summary_Paper_WANLP_ACL_2019.pdf
+│   └── README.txt
+├── MADAR-SHARED-TASK-final-release-25Jul2019.zip
+├── MultiDial-Public-Version-2014
+│   ├── LICENSE.txt
+│   ├── Multidialectal_Parallel_Corpus_of_Arabic
+│   │   ├── EG.txt
+│   │   ├── EN.txt
+│   │   ├── JO.txt
+│   │   ├── l.txt
+│   │   ├── MSA.txt
+│   │   ├── PA.txt
+│   │   ├── SY.txt
+│   │   └── TN.txt
+│   ├── Multidialectal_Parallel_Corpus_of Arabic_Paper.pdf
+│   └── README.txt
+├── MultiDial-Public-Version-2014.zip
+└── PADIC.xml
+```
+
+4. Run the Expected Maximal Accuracy estimation script:
+```
+python estimate_maximal_accuracy_parallel_corpora.py
+```
+**Note**: The script prints the metrics and saves intermediate data files to `data/preprocessed`.
+
+## Error analysis
 * Download NADI2022 (training data is a subset from NADI2021) and NADI2023 datasets to `data/`.
 * Extract both zip files into `data/`
 * Unify the column names of both datasets by running `python augment_dataset.py`
-
-## Error analysis
 
 * Fine-tune MarBERT using NADI2023's training data
 ```
