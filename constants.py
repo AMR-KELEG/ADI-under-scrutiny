@@ -1,6 +1,3 @@
-NADI_FILE_PATH = "data/NADI_datasets/NADI2021_2023.tsv"
-MADAR_FILE_PATH = "data/MADAR.tsv"
-
 # Dialects covered in NADI2023
 DIALECTS = [
     "Algeria",
@@ -81,6 +78,28 @@ MultiDialect_COUNTRYCODE_TO_COUNTRY = {
     "SY": "Syria",
     "JO": "Jordan",
     "PA": "Palestine",
+}
+
+
+QADI_COUNTRYCODE_TO_COUNTRY = {
+    "AE": "UAE",
+    "BH": "Bahrain",
+    "DZ": "Algeria",
+    "EG": "Egypt",
+    "IQ": "Iraq",
+    "JO": "Jordan",
+    "KW": "Kuwait",
+    "LB": "Lebanon",
+    "LY": "Libya",
+    "MA": "Morocco",
+    "OM": "Oman",
+    "PL": "Palestine",
+    "QA": "Qatar",
+    "SA": "Saudi_Arabia",
+    "SD": "Sudan",
+    "SY": "Syria",
+    "TN": "Tunisia",
+    "YE": "Yemen",
 }
 
 COUNTRIES_IN_SAME_REGION = {

@@ -29,6 +29,7 @@ SEED = 42
 random.seed(SEED)
 torch.manual_seed(SEED)
 
+
 def transform_input(tokenizer, filenames, alpha=0, beta=0):
     """Tokenize the input text and return the features in the HF dict format.
 
@@ -266,8 +267,8 @@ def main():
         # TODO: Update the training arguments
         NO_STEPS = 1000
         BATCH_SIZE = 32
-        ALPHA=0.3
-        BETA=0.3
+        ALPHA = 0.3
+        BETA = 0.3
         training_args = TrainingArguments(
             output_dir=args.o,
             save_strategy="epoch",

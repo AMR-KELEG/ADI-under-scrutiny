@@ -2,12 +2,12 @@ import os
 import pandas as pd
 from tqdm import tqdm
 from pathlib import Path
-from constants import COUNTRY_TO_REGION
+from constants import COUNTRY_TO_REGION, QADI_COUNTRYCODE_TO_COUNTRY
 
 tqdm.pandas()
 
 
-def augment_df(df):
+def unify_NADI_dataset(df):
     # Rename the columns
     TEXT_COLUMNS = ["sent", "#2_content", "#2 tweet_content", "#2_tweet"]
     LABEL_COLUMNS = ["#3_label", "#3 country_label", "#3_country_label", "country"]
@@ -47,38 +47,41 @@ def augment_df(df):
 
 if __name__ == "__main__":
     NADI2023_BASE_DIR = "data/NADI2023_Release_Train/Subtask1/"
-    OUTPUT_DIR = "data/NADI_datasets/"
+    OUTPUT_DIR = "data/preprocessed/"
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    NADI_dfs = []
     for split in ["TRAIN", "DEV"]:
         df = pd.read_csv(
             str(Path(NADI2023_BASE_DIR, f"NADI2023_Subtask1_{split}.tsv")),
             sep="\t",
         )
-        augmented_df = augment_df(df)
-        NADI_dfs.append(augmented_df)
-        augmented_df.to_csv(
+        unified_NADI2023_df = unify_NADI_dataset(df)
+        unified_NADI2023_df.to_csv(
             str(Path(OUTPUT_DIR, f"NADI2023_{split.lower()}.tsv")),
             sep="\t",
             index=False,
         )
 
-    NADI2022_BASE_DIR = "data/NADI2022-Train/Subtask1/"
-    for split in ["TRAIN", "DEV"]:
-        df = pd.read_csv(
-            str(Path(NADI2022_BASE_DIR, f"NADI2022_Subtask1_{split}.tsv")),
-            sep="\t",
-        )
-        augmented_df = augment_df(df)
-        NADI_dfs.append(augmented_df)
-        augmented_df.to_csv(
-            str(Path(OUTPUT_DIR, f"NADI2021_{split.lower()}.tsv")),
-            sep="\t",
-            index=False,
-        )
-
-    NADI_2021_2023_df = pd.concat(NADI_dfs)
-    NADI_2021_2023_df.to_csv(
-        str(Path(OUTPUT_DIR, f"NADI2021_2023.tsv")), sep="\t", index=False
+    df = pd.read_csv(
+        str(Path(NADI2023_BASE_DIR, f"NADI2021-TWT.tsv")),
+        sep="\t",
     )
+    unified_NADI2021_df = unify_NADI_dataset(df)
+    unified_NADI2021_df.to_csv(
+        str(Path(OUTPUT_DIR, f"NADI2021_DA_train.tsv")),
+        sep="\t",
+        index=False,
+    )
+
+    QADI_df = pd.read_csv(
+        "data/QADI_Corpus/testset/QADI_test.txt", sep="\t", header=None
+    )
+    QADI_df.columns = ["text", "label"]
+
+    # Drop MSA samples from QADI's testset
+    QADI_df = QADI_df[QADI_df["label"] != "MSA"].reset_index(drop=True)
+
+    # Map QADI's labels from Country code to country names
+    QADI_df["label"] = QADI_df["label"].apply(lambda l: QADI_COUNTRYCODE_TO_COUNTRY[l])
+
+    QADI_df.to_csv(str(Path(OUTPUT_DIR, "QADI.tsv")), index=False, sep="\t")
