@@ -62,7 +62,7 @@ python estimate_maximal_accuracy_parallel_corpora.py
 ```
 **Note**: The script prints the metrics and saves intermediate data files to `data/preprocessed`.
 
-## Experiment #1 - Analyzing the errors of a MarBERT model
+## Experiment #2 - Analyzing the errors of a MarBERT model
 1. Create the data directory
 ```
 mkdir -p data/
@@ -71,7 +71,8 @@ mkdir -p data/
 2. Download the datasets to the `data/` directory
 - NADI 2023
 - QADI: http://alt.qcri.org/resources/qadi/
-** Note**: QADI's zip is password protected. The password can be found through the dataset's page.
+
+**Note**: QADI's zip is password protected. The password can be found through the dataset's page.
 
 3. Extract the zip files:
 ```
