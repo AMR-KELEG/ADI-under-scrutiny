@@ -1,4 +1,6 @@
 # Arabic Dialect Identification under Scrutiny
+
+[![Huggingface Space](https://img.shields.io/badge/🤗-Demo%20-yellow.svg)](https://huggingface.co/AMR-KELEG/ADI-NADI-2023)
 [![Data](https://img.shields.io/badge/Error_Analysis-Annotations-blue)](https://github.com/AMR-KELEG/ADI-under-scrutiny/raw/master/data/annotations.tar.gz)
 
 ## Experiment #1 - Estimating the Maximal Accuracy of Parallel Corpora
