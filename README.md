@@ -1,4 +1,5 @@
 # Arabic Dialect Identification under Scrutiny
+[![Data](https://img.shields.io/badge/Error_Analysis-Annotations-blue)](https://github.com/AMR-KELEG/ADI-under-scrutiny/raw/master/data/annotations.tar.gz)
 
 ## Experiment #1 - Estimating the Maximal Accuracy of Parallel Corpora
 1. Create a directory for the data:
