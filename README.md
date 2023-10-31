@@ -2,6 +2,7 @@
 
 [![Huggingface Space](https://img.shields.io/badge/🤗-Demo%20-yellow.svg)](https://huggingface.co/AMR-KELEG/ADI-NADI-2023)
 [![Data](https://img.shields.io/badge/Error_Analysis-Annotations-blue)](https://github.com/AMR-KELEG/ADI-under-scrutiny/raw/master/data/annotations.tar.gz)
+[![arXiv](https://img.shields.io/badge/arXiv-2310.13661-00ff00.svg)](https://arxiv.org/abs/2310.13661)
 
 ## Experiment #1 - Estimating the Maximal Accuracy of Parallel Corpora
 1. Create a directory for the data:
