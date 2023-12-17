@@ -164,3 +164,35 @@ CUDA_VISIBLE_DEVICES="0" python finetune-BERT.py predict -d data/preprocessed/QA
 ```
 python analyze_QADI.py
 ```
+
+## Citation
+```
+@inproceedings{keleg-magdy-2023-arabic,
+    title = "{A}rabic Dialect Identification under Scrutiny: Limitations of Single-label Classification",
+    author = "Keleg, Amr  and
+      Magdy, Walid",
+    editor = "Sawaf, Hassan  and
+      El-Beltagy, Samhaa  and
+      Zaghouani, Wajdi  and
+      Magdy, Walid  and
+      Abdelali, Ahmed  and
+      Tomeh, Nadi  and
+      Abu Farha, Ibrahim  and
+      Habash, Nizar  and
+      Khalifa, Salam  and
+      Keleg, Amr  and
+      Haddad, Hatem  and
+      Zitouni, Imed  and
+      Mrini, Khalil  and
+      Almatham, Rawan",
+    booktitle = "Proceedings of ArabicNLP 2023",
+    month = dec,
+    year = "2023",
+    address = "Singapore (Hybrid)",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.arabicnlp-1.31",
+    doi = "10.18653/v1/2023.arabicnlp-1.31",
+    pages = "385--398",
+    abstract = "Automatic Arabic Dialect Identification (ADI) of text has gained great popularity since it was introduced in the early 2010s. Multiple datasets were developed, and yearly shared tasks have been running since 2018. However, ADI systems are reported to fail in distinguishing between the micro-dialects of Arabic. We argue that the currently adopted framing of the ADI task as a single-label classification problem is one of the main reasons for that. We highlight the limitation of the incompleteness of the Dialect labels and demonstrate how it impacts the evaluation of ADI systems. A manual error analysis for the predictions of an ADI, performed by 7 native speakers of different Arabic dialects, revealed that $\approx$ 67{\%} of the validated errors are not true errors. Consequently, we propose framing ADI as a multi-label classification task and give recommendations for designing new ADI datasets.",
+}
+```
